@@ -1,0 +1,13 @@
+train: ../yolov8/train/images
+val: ../yolov8/val/images
+
+
+nc: 1
+names: ['toys']
+
+roboflow:
+  workspace: ahsan-cheema
+  project: toys-zlomv
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/ahsan-cheema/toys-zlomv/dataset/1
