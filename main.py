@@ -168,6 +168,7 @@ def pick_and_place_toy_kinematics(xarm):
         q = model_to_physical_robot(sol)
         env.step()
         xarm.set_joint_state(list(q))
+        #xarm.reset()
         print(f"Inverse Kinematic Solution:")
         print(q)
     xarm.reset()
@@ -189,7 +190,7 @@ def sanitize_Teps(Tfk):
 
 def physical_robot_to_model(q):
     q = np.asarray(q).astype(float)
-    q[0] += 90.0
+    q[0] -= 90.0
     q[1] *= -1.0
     q = degree_to_radians(q)
     return q
@@ -197,7 +198,7 @@ def physical_robot_to_model(q):
 def model_to_physical_robot(q):
     q = np.asarray(q).astype(float)
     q = radians_to_degrees(q)
-    q[0] -= 90.0
+    q[0] += 90.0
     q[1] *= -1.0
     #Restrict the movement to joint limits
     for i,val in enumerate(q):
